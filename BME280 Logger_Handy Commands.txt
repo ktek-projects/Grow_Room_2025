@@ -1,0 +1,138 @@
+# BME280 Logger - Handy Commands Reference
+
+## Service Management
+
+### View live logs (real-time)
+```
+sudo journalctl -u bme280-logger.service -f
+```
+
+### View recent logs (last 50 lines)
+```
+sudo journalctl -u bme280-logger.service -n 50
+```
+
+### Check service status
+```
+sudo systemctl status bme280-logger.service
+```
+
+### Start the service
+```
+sudo systemctl start bme280-logger.service
+```
+
+### Stop the service
+```
+sudo systemctl stop bme280-logger.service
+```
+
+### Restart the service
+```
+sudo systemctl restart bme280-logger.service
+```
+
+### Enable auto-start on boot
+```
+sudo systemctl enable bme280-logger.service
+```
+
+### Disable auto-start on boot
+```
+sudo systemctl disable bme280-logger.service
+```
+
+### Reload systemd (after editing service file)
+```
+sudo systemctl daemon-reload
+```
+
+## Script Management
+
+### Edit the Python script
+```
+sudo nano /opt/growroom/bme280_logger.py
+```
+
+### Run script manually (for testing)
+```
+python3 /opt/growroom/bme280_logger.py
+```
+
+### Edit the service file
+```
+sudo nano /etc/systemd/system/bme280-logger.service
+```
+
+## I2C Troubleshooting
+
+### Scan for I2C devices
+```
+i2cdetect -y 1
+```
+
+### Check I2C device permissions
+```
+ls -l /dev/i2c-*
+```
+
+### Check user groups
+```
+groups pi
+```
+
+## InfluxDB Commands
+
+### Access InfluxDB CLI
+```
+influx
+```
+
+### Show databases (in InfluxDB CLI)
+```
+SHOW DATABASES
+```
+
+### Use growroom database (in InfluxDB CLI)
+```
+USE growroom
+```
+
+### Show measurements (in InfluxDB CLI)
+```
+SHOW MEASUREMENTS
+```
+
+### Query recent data (in InfluxDB CLI)
+```
+SELECT * FROM environment ORDER BY time DESC LIMIT 10
+```
+
+### Exit InfluxDB CLI
+```
+exit
+```
+
+## System Commands
+
+### Reboot the Raspberry Pi
+```
+sudo reboot
+```
+
+### Check system logs
+```
+sudo journalctl -xe
+```
+
+### Check Python version
+```
+python3 --version
+```
+
+## File Locations
+
+- Python script: `/opt/growroom/bme280_logger.py`
+- Service file: `/etc/systemd/system/bme280-logger.service`
+- DFRobot library: `~/DFRobot_BME280/python/raspberrypi/`
+- Log files: View with `journalctl` commands abo
