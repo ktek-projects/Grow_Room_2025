@@ -1,5 +1,4 @@
 # Run this calibration helper script
-python3 -c "
 import board
 import busio
 import adafruit_ads1x15.ads1115 as ADS
@@ -31,8 +30,3 @@ print('Put sensor in WATER, then press Enter...')
 input()
 wet2 = chan1.voltage
 print(f'Wet voltage A1: {wet2:.3f}V')
-
-print('\n=== Update these values in your script ===')
-print(f\"'A0': dry_voltage: {dry1:.2f}, wet_voltage: {wet1:.2f}\")
-print(f\"'A1': dry_voltage: {dry2:.2f}, wet_voltage: {wet2:.2f}\")
-"
